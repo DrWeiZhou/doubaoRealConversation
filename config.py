@@ -1,12 +1,28 @@
 import uuid
 import pyaudio
+from dotenv import load_dotenv
+import os
+
+# 加载环境变量
+load_dotenv()
+
+# 从环境变量获取API凭证
+X_API_APP_ID = os.getenv("X-Api-App-ID")
+X_API_ACCESS_KEY = os.getenv("X-Api-Access-Key")
+
+# 验证必要的环境变量
+if not X_API_APP_ID or not X_API_ACCESS_KEY:
+    raise ValueError(
+        "Missing required environment variables. "
+        "Please set X-Api-App-ID and X-Api-Access-Key in your .env file."
+    )
 
 # 配置信息
 ws_connect_config = {
     "base_url": "wss://openspeech.bytedance.com/api/v3/realtime/dialogue",
     "headers": {
-        "X-Api-App-ID": "5113514804",
-        "X-Api-Access-Key": "sFKAWKQR1ErDcLNJeVaDFrkjZqs_oHCR",
+        "X-Api-App-ID": X_API_APP_ID,
+        "X-Api-Access-Key": X_API_ACCESS_KEY,
         "X-Api-Resource-Id": "volc.speech.dialog",  # 固定值
         "X-Api-App-Key": "PlgvMymc7f3tQnJ6",  # 固定值
         "X-Api-Connect-Id": str(uuid.uuid4()),
