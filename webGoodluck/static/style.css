@@ -46,7 +46,6 @@ h1 {
     padding: 20px;
     margin-bottom: 20px;
     background: #fafafa;
-    scroll-behavior: smooth;
 }
 
 .message {
@@ -113,118 +112,75 @@ h1 {
     display: flex;
     gap: 15px;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .voice-btn {
-    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    padding: 18px 36px;
+    flex: 1;
+    max-width: 200px;
+    padding: 15px 30px;
     font-size: 18px;
     font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-    position: relative;
-    overflow: hidden;
-    -webkit-user-select: none;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     user-select: none;
+    -webkit-user-select: none;
 }
 
-.voice-btn:hover {
+.voice-btn:hover:not(:active) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
 }
 
-.voice-btn:active {
-    transform: translateY(0);
-}
-
+.voice-btn:active,
 .voice-btn.recording {
-    background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
-    animation: pulse 1.5s infinite;
-    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+    transform: translateY(0);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-.recording-indicator {
+.voice-btn.recording .btn-text {
     display: none;
-    animation: blink 1s infinite;
 }
 
-@keyframes blink {
-    0%, 50% {
-        opacity: 1;
-    }
-    51%, 100% {
-        opacity: 0.5;
-    }
+.voice-btn.recording .recording-indicator {
+    display: inline !important;
 }
 
 .clear-btn {
-    background: #6c757d;
-    color: white;
-    border: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    color: #666;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
     border-radius: 25px;
-    padding: 12px 24px;
-    font-size: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .clear-btn:hover {
-    background: #5a6268;
-    transform: translateY(-1px);
-}
-
-.audio-test-btn {
-    background: linear-gradient(135deg, #007acc 0%, #0056b3 100%);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 12px 24px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 122, 204, 0.3);
-}
-
-.audio-test-btn:hover {
-    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 122, 204, 0.4);
+    background: #e0e0e0;
+    color: #333;
 }
 
 .status {
     text-align: center;
     color: #666;
     font-size: 14px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border: 1px solid #dee2e6;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
-/* 日志样式 */
 .connection-log {
     margin-top: 20px;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
-    background: #f8f9fa;
+    background: #f9f9f9;
 }
 
 .log-header {
@@ -233,29 +189,30 @@ h1 {
     align-items: center;
     padding: 15px 20px;
     border-bottom: 1px solid #e0e0e0;
-    background: #f1f3f4;
+    background: #f5f5f5;
     border-radius: 12px 12px 0 0;
 }
 
 .log-header h3 {
+    margin: 0;
     font-size: 16px;
     color: #333;
-    margin: 0;
 }
 
 .clear-log-btn {
-    background: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 5px 12px;
     font-size: 12px;
+    color: #666;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
 }
 
 .clear-log-btn:hover {
-    background: #c82333;
+    background: #f0f0f0;
+    color: #333;
 }
 
 .log-content {
@@ -269,59 +226,59 @@ h1 {
 
 .log-entry {
     margin-bottom: 5px;
-    padding: 5px;
+    padding: 5px 8px;
     border-radius: 4px;
-    border-left: 4px solid transparent;
+    border-left: 3px solid #ddd;
 }
 
 .log-entry.info {
-    background: #e7f3ff;
-    border-left-color: #007bff;
-    color: #0056b3;
+    background: #e3f2fd;
+    border-left-color: #2196f3;
+    color: #1976d2;
 }
 
 .log-entry.success {
-    background: #d4edda;
-    border-left-color: #28a745;
-    color: #155724;
+    background: #e8f5e8;
+    border-left-color: #4caf50;
+    color: #2e7d32;
 }
 
 .log-entry.warning {
-    background: #fff3cd;
-    border-left-color: #ffc107;
-    color: #856404;
+    background: #fff3e0;
+    border-left-color: #ff9800;
+    color: #e65100;
 }
 
 .log-entry.error {
-    background: #f8d7da;
-    border-left-color: #dc3545;
-    color: #721c24;
+    background: #ffebee;
+    border-left-color: #f44336;
+    color: #c62828;
 }
 
 .log-timestamp {
     color: #666;
-    font-weight: normal;
-    margin-right: 8px;
+    font-weight: bold;
 }
 
 .log-message {
-    font-weight: 500;
+    margin-left: 5px;
 }
 
 /* 响应式设计 */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .container {
         margin: 10px;
-        max-width: none;
+        border-radius: 15px;
+    }
+    
+    h1 {
+        font-size: 24px;
+        padding: 20px;
     }
     
     .dialog-box {
         height: 300px;
-    }
-    
-    .voice-btn {
-        padding: 15px 30px;
-        font-size: 16px;
+        padding: 15px;
     }
     
     .controls {
@@ -329,7 +286,72 @@ h1 {
         align-items: center;
     }
     
-    .log-content {
-        max-height: 150px;
+    .voice-btn {
+        max-width: none;
+        width: 100%;
     }
+}
+
+@media (max-width: 400px) {
+    .dialog-container {
+        padding: 15px;
+    }
+    
+    .dialog-box {
+        height: 250px;
+    }
+}
+
+/* 滚动条样式 */
+.dialog-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dialog-box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.dialog-box::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.dialog-box::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* 触摸设备优化 */
+@media (hover: none) {
+    .voice-btn:hover:not(:active) {
+        transform: none;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+}
+
+/* 动画效果 */
+.voice-btn,
+.clear-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.voice-btn::before,
+.clear-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.voice-btn:active::before,
+.clear-btn:active::before {
+    width: 300px;
+    height: 300px;
 }

@@ -1,0 +1,13 @@
+# 现有依赖
+pyaudio
+websockets
+asyncio-mqtt
+python-dotenv
+
+# Web框架
+fastapi
+uvicorn[standard]
+pydantic
+
+# 额外依赖
+python-multipart
